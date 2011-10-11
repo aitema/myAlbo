@@ -1,11 +1,11 @@
 <h1>Ricerca archivio atti</h1>
 <p class="bodytext">Utilizza le opzioni seguenti per ricercare all'interno dell'archivio atti.</p>
 <div style="clear:both;"></div>
-<%= form_tag 'http://127.0.0.1:3000/documents/', :authenticity_token => false, :method => 'get', :id => "search" do %>
+<%= form_tag 'http://esuverona.aitema.it:8000/documents/', :authenticity_token => false, :method => 'get', :id => "search" do %>
 	<div class="ricerca"><strong>Tipo di documento</strong><br> <%= select_tag(:tx_myalbo2_documento, options_for_select(@types,params[:tx_myalbo2_documento]),:include_blank => true) %></div>
 	<div class="ricerca"><strong>Numero</strong><br> <%= text_field_tag(:tx_myalbopretorio_numero) %></div>
 	<div class="ricerca"><strong>Oggetto</strong><br> <%= text_field_tag(:title) %></div>
-	<div class="ricerca"><strong>Data gg/mm/aaaa</strong><br> <%= text_field_tag(:title) %></div>
+	<div class="ricerca"><strong>Data (gg/mm/aaaa)</strong><br> <%= text_field_tag(:data) %></div>
 	<%= submit_tag "Avvia la ricerca", :name => nil, :class => "searchbutton" %>	
 <% end %>
 
@@ -27,7 +27,7 @@
 		<td style="text-align: center;"><%= document.tx_myalbopretorio_numero %></td>
 		<td style="width: 80px;text-align: center;" nowrap><%= l Time.at(document.datetime), :format => :shortdate %></td>
 		<td>
-			<%= link_to document.title, "http://esuverona.aitema.it/area-istituzionale/albo-online/atto/?tx_ttnews%5Btt_news%5D=#{document.uid}"%>
+			<%= link_to document.title, "http://esuverona.aitema.it/area-istituzionale/archivio-atti/atto/?tx_ttnews%5Btt_news%5D=#{document.uid}"%>
 			<br>
 			<%= document.short %>
 		</td>

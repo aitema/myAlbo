@@ -12,6 +12,7 @@ class Document < ActiveRecord::Base
     sql += " AND tx_myalbopretorio_numero=\'#{numero}\'" if !numero.nil? && !numero.blank?
     sql += " AND tx_myalbo2_documento = #{documento}" if !documento.nil? && !documento.blank?
     sql += " AND (title LIKE \'%#{oggetto}%\' OR short LIKE \'%#{oggetto}%\')" if !oggetto.nil? && !oggetto.blank?
+    sql += " AND DATE_FORMAT(DATE(FROM_UNIXTIME(datetime)),'%d/%m/%Y') = '#{data}'" if !data.nil? && !data.blank?
     where(sql)
   end 
 end
